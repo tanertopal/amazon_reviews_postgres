@@ -11,18 +11,17 @@ exec() {
 }
 
 exec "
-    CREATE OR REPLACE FUNCTION reviews_by_author_id(author_id bigint)
+    CREATE OR REPLACE FUNCTION authors_by_min_num_reviews(min_num_reviews bigint)
     RETURNS TABLE (
         id BIGINT,
-        val JSONB
+        rid text,
+        num_reviews BIGINT
     ) AS \$$
     BEGIN
         RETURN QUERY
-        SELECT a.id, dj.values
-        FROM authors a
-        LEFT JOIN data_json dj
-            ON a.rid = dj.values->>'reviewerID'
-        WHERE a.id = author_id;
+        SELECT *
+        FROM authors
+        WHERE authors.num_reviews > min_num_reviews;
     END;
     \$$  LANGUAGE plpgsql;
 "

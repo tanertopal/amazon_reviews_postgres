@@ -47,3 +47,9 @@ SELECT * FROM reviews_by_author_id(1);
 **WARNING:** The numerical author id / string reviewerID mapping is not stable and even with
 the same base dataset you might end up with a different numerical id / reviewerID mapping
 after recreating the database. They are stable between queries though.
+
+**Get authors with min number of reviews:**
+
+```sql
+SELECT * FROM authors_by_min_num_reviews(10);
+```
