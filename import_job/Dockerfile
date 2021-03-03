@@ -18,6 +18,4 @@ RUN apt-get update
 # If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
 RUN apt-get -y install postgresql-client-13
 
-COPY import.sh import.sh
-
-CMD ./import.sh
+COPY scripts scripts

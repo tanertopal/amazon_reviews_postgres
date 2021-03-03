@@ -7,4 +7,5 @@ set -e
 cd $(dirname "$0")
 
 docker build -q -t import_job .
-docker run -it --rm --net=host -v $(pwd)/datasets:/datasets import_job
+docker run -it --rm --net=host -v $(pwd)/datasets:/datasets import_job /scripts/import.sh
+docker run -it --rm --net=host -v $(pwd)/datasets:/datasets import_job /scripts/creater_authors_view.sh
