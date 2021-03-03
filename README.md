@@ -31,3 +31,19 @@ SELECT *
 FROM data_json
 WHERE data_json.values->>'reviewerID' = 'AGUJ97UTICV4W';
 ```
+
+### SQL Functions
+
+To optimize some queries a few materialized views and SQL functions are created.
+
+**Get reviews by author ID:**
+
+Id range with the book reviews dataset is from `1` to `15362619`.
+
+```sql
+SELECT * FROM reviews_by_author_id(1);
+```
+
+**WARNING:** The numerical author id / string reviewerID mapping is not stable and even with
+the same base dataset you might end up with a different numerical id / reviewerID mapping
+after recreating the database. They are stable between queries though.
